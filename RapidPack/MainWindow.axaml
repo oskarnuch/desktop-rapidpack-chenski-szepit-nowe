@@ -22,7 +22,8 @@
                            FontSize="26"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
-                           Margin="0,0,0,15"/>
+                           Margin="0,0,0,15"
+                           TextWrapping="Wrap"/>
 
                 <!-- Dane paczki -->
                 <StackPanel Grid.Row="1" Spacing="12">
@@ -70,12 +71,14 @@
 
                     <TextBlock Text="⚙️ Usługi dodatkowe"
                                FontWeight="Bold"
-                               FontSize="16"/>
+                               FontSize="16"
+                               TextWrapping="Wrap"/>
 
                     <CheckBox x:Name="ExpressCheckBox"
                               Content="Ekspres (+15 zł)"
                               FontSize="14"
-                              Foreground="Blue"/>
+                              Foreground="Blue"
+                              Background="#FFDFA0"/>
 
                     <StackPanel>
 
@@ -104,6 +107,9 @@
                             Height="45"
                             FontSize="18"
                             FontWeight="Bold"
+                            Background="#FFDFA0"
+                            BorderThickness="6"
+                            CornerRadius="8"
                             />
 
                     <TextBlock x:Name="ResultTextBlock"
