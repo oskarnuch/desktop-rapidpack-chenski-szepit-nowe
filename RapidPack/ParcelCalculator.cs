@@ -1,41 +1,64 @@
-namespace RapidPack;
+using System;
 
-public class ParcelCalculator
+namespace RapidPack
 {
-
-    public double Oblicz(int waga,int wysokosc,int glebokosc,int szerokosc, bool Checked, int Typ)
+    public class ParcelCalculator
     {
-        
-        int baza = 10;
-        double cenaKoncowa = 0;
 
-       
-        cenaKoncowa += waga*2;
-        if (150 < wysokosc + glebokosc + szerokosc)
+        public static double CalculatePrice(
+            double weight,
+            double height,
+            double width,
+            double depth,
+            bool express,
+            string type)
         {
-            cenaKoncowa*=1.5;
-        }
 
-        if (Checked = true)
-        {
-            cenaKoncowa += 15;
-        }
 
-        if (Typ == 1)
-        {
-            cenaKoncowa += 10;
+            if (weight > 30)
+            {
+                throw new Exception("Nie obsługujemy paczek cięższych niż 30 kg.");
+            }
+
+            double price;
+
+
+            if (type == "Paleta")
+            {
+                price = 100;
+            }
+            else
+            {
+
+
+                price = 10;
+
+
+                price += weight * 2;
+
+
+                double dimensionSum = height + width + depth;
+
+                if (dimensionSum > 150)
+                {
+                    price = price * 1.5;
+                }
+
+
+                if (type == "Ostrożnie")
+                {
+                    price += 10;
+                }
+            }
+
+
+            if (express)
+            {
+                price += 15;
+            }
+
+            return price;
         }
-        else if (Typ == 2)
-        {
-            cenaKoncowa = 100;
-        }
-            
-        return cenaKoncowa;
 
     }
-    
-    
-    
-    
-    
 }
