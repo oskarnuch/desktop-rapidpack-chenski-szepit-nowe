@@ -1,41 +1,47 @@
-namespace RapidPack;
+using System;
 
-public class ParcelCalculator
+namespace RapidPack
 {
-
-    public double Oblicz(int waga,int wysokosc,int glebokosc,int szerokosc, bool Checked, int Typ)
+    public class ParcelCalculator
     {
-        
-        int baza = 10;
-        double cenaKoncowa = 0;
-
-       
-        cenaKoncowa += waga*2;
-        if (150 < wysokosc + glebokosc + szerokosc)
+        public double CalculatePrice(double weight, double height, double width, double depth, bool isExpress, string shipmentType)
         {
-            cenaKoncowa*=1.5;
-        }
+            // 1. Walidacja wagi (zawsze, nawet dla palety)
+            if (weight > 30)
+                throw new ArgumentException("Waga nie może przekraczać 30 kg!");
 
-        if (Checked = true)
-        {
-            cenaKoncowa += 15;
-        }
+            double finalPrice = 0;
 
-        if (Typ == 1)
-        {
-            cenaKoncowa += 10;
-        }
-        else if (Typ == 2)
-        {
-            cenaKoncowa = 100;
-        }
-            
-        return cenaKoncowa;
+            // 2. Logika dla Palety
+            if (shipmentType == "Paleta")
+            {
+                finalPrice = 100;
+            }
+            else
+            {
+                // 3. Logika Standardowa / Ostrożnie
+                finalPrice = 10 + (weight * 2);
 
+                // Gabaryt (suma wymiarów > 150 cm)
+                if (height + width + depth > 150)
+                {
+                    finalPrice *= 1.5;
+                }
+
+                // Dodatek za "Ostrożnie"
+                if (shipmentType == "Ostrożnie")
+                {
+                    finalPrice += 10;
+                }
+            }
+
+            // 4. Usługi dodatkowe (Ekspres doliczany na końcu)
+            if (isExpress)
+            {
+                finalPrice += 15;
+            }
+
+            return finalPrice;
+        }
     }
-    
-    
-    
-    
-    
 }
