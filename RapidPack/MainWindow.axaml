@@ -4,9 +4,9 @@
         Title="RapidPack"
         Foreground="Black">
 
-    <Grid Background="#FFBE30">
+    <Grid Background="#FFDFA0">
 
-        <Border Background="#FBE2AC"
+        <Border Background="#FFF3D6"
                 CornerRadius="15"
                 Padding="30"
                 Margin="30"
@@ -22,7 +22,8 @@
                            FontSize="26"
                            FontWeight="Bold"
                            HorizontalAlignment="Center"
-                           Margin="0,0,0,15"/>
+                           Margin="0,0,0,15"
+                           TextWrapping="Wrap"/>
 
                 <!-- Dane paczki -->
                 <StackPanel Grid.Row="1" Spacing="12">
@@ -31,7 +32,7 @@
                                FontWeight="Bold"
                                FontSize="16"/>
 
-                    <WrapPanel Margin="0,5,0,5">
+                    <WrapPanel Margin="0,10,0,10">
 
                         <StackPanel Margin="10">
                             <TextBlock Text="Waga (kg)"/>
@@ -70,12 +71,14 @@
 
                     <TextBlock Text="⚙️ Usługi dodatkowe"
                                FontWeight="Bold"
-                               FontSize="16"/>
+                               FontSize="16"
+                               TextWrapping="Wrap"/>
 
                     <CheckBox x:Name="ExpressCheckBox"
                               Content="Ekspres (+15 zł)"
                               FontSize="14"
-                              Foreground="Blue"/>
+                              Foreground="Blue"
+                              Background="#FFF3D6"/>
 
                     <StackPanel>
 
@@ -97,13 +100,18 @@
 
                 <!-- Wynik -->
                 <StackPanel Grid.Row="3" Spacing="15">
-
+                    
                     <Button x:Name="CalculateButton"
+                            Click="OnCalculateClick"
+                            Foreground="Black" 
                             Content="WYCEŃ PRZESYŁKĘ"
                             Height="45"
                             FontSize="18"
                             FontWeight="Bold"
-                            Foreground="Black"/>
+                            Background="#FFDFA0"
+                            BorderThickness="6"
+                            CornerRadius="8"
+                            />
 
                     <TextBlock x:Name="ResultTextBlock"
                                Text="Tutaj pojawi się podsumowanie..."
