@@ -78,7 +78,7 @@
                               Content="Ekspres (+15 zł)"
                               FontSize="14"
                               Foreground="Blue"
-                              Background="#FFDFA0"/>
+                              Background="#FFF3D6"/>
 
                     <StackPanel>
 
