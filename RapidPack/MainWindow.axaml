@@ -102,6 +102,7 @@
                 <StackPanel Grid.Row="3" Spacing="15">
                     
                     <Button x:Name="CalculateButton"
+                            Click="OnCalculateClick"
                             Foreground="Black" 
                             Content="WYCEŃ PRZESYŁKĘ"
                             Height="45"
