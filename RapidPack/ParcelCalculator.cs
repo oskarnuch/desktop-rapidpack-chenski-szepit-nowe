@@ -4,61 +4,44 @@ namespace RapidPack
 {
     public class ParcelCalculator
     {
-
-        public static double CalculatePrice(
-            double weight,
-            double height,
-            double width,
-            double depth,
-            bool express,
-            string type)
+        public double CalculatePrice(double weight, double height, double width, double depth, bool isExpress, string shipmentType)
         {
-
-
+            // 1. Walidacja wagi (zawsze, nawet dla palety)
             if (weight > 30)
+                throw new ArgumentException("Waga nie może przekraczać 30 kg!");
+
+            double finalPrice = 0;
+
+            // 2. Logika dla Palety
+            if (shipmentType == "Paleta")
             {
-                throw new Exception("Nie obsługujemy paczek cięższych niż 30 kg.");
-            }
-
-            double price;
-
-
-            if (type == "Paleta")
-            {
-                price = 100;
+                finalPrice = 100;
             }
             else
             {
+                // 3. Logika Standardowa / Ostrożnie
+                finalPrice = 10 + (weight * 2);
 
-
-                price = 10;
-
-
-                price += weight * 2;
-
-
-                double dimensionSum = height + width + depth;
-
-                if (dimensionSum > 150)
+                // Gabaryt (suma wymiarów > 150 cm)
+                if (height + width + depth > 150)
                 {
-                    price = price * 1.5;
+                    finalPrice *= 1.5;
                 }
 
-
-                if (type == "Ostrożnie")
+                // Dodatek za "Ostrożnie"
+                if (shipmentType == "Ostrożnie")
                 {
-                    price += 10;
+                    finalPrice += 10;
                 }
             }
 
-
-            if (express)
+            // 4. Usługi dodatkowe (Ekspres doliczany na końcu)
+            if (isExpress)
             {
-                price += 15;
+                finalPrice += 15;
             }
 
-            return price;
+            return finalPrice;
         }
-
     }
 }
